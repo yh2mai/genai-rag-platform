@@ -32,7 +32,12 @@ class Settings(BaseSettings):
     ALLOWED_ORIGINS: List[str]
     
     # Database Configuration
+    DATABASE_TYPE: str = Field(default="sqlite", description="Database type: sqlite or mongodb")
     DATABASE_URL: str
+    
+    # MongoDB Configuration (optional, only if DATABASE_TYPE=mongodb)
+    MONGODB_URL: str = Field(default="mongodb://localhost:27017/", description="MongoDB connection URL")
+    MONGODB_DATABASE: str = Field(default="enterprise_genai", description="MongoDB database name")
     
     # Vector Database Configuration
     VECTOR_DB_PATH: str
@@ -50,8 +55,8 @@ class Settings(BaseSettings):
     MAX_TOKENS: int
     TEMPERATURE: float
     DEEPSEEK_API_KEY: str = Field(
+        default="placeholder-set-real-key-for-llm-features",
         description="DeepSeek API key - get from https://platform.deepseek.com/",
-        min_length=1
     )
     
     # Logging Configuration

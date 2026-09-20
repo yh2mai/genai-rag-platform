@@ -1,5 +1,5 @@
 # Multi-stage Docker build for Enterprise GenAI Platform Frontend
-FROM node:18-alpine as build
+FROM node:24-alpine as build
 
 # Set working directory
 WORKDIR /app
@@ -8,7 +8,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependencies
-RUN npm ci --only=production
+RUN npm install
 
 # Copy source code
 COPY . .

@@ -6,6 +6,8 @@ services:
     container_name: enterprise-genai-backend
     ports:
       - "8000:8000"
+    env_file:
+      - ./backend/.env
     environment:
       - HOST=0.0.0.0
       - PORT=8000
